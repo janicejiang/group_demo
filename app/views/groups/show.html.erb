@@ -1,0 +1,9 @@
+<div class="col-md-12">
+  <div class="group">
+    <!-- edit_group_path(@group) 辅助方法, 返回值为 /groups/:id/edit -->
+    <%= link_to("Edit", edit_group_path(@group),
+                class: "btn btn-primary pull-right") %>
+    <h2><%= @group.title %></h2>
+    <p><%= @group.description %></p>
+  </div>
+</div>

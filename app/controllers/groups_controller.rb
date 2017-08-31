@@ -3,6 +3,10 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
+  def show
+    @group = Group.find(params[:id]) # find 方法检索指定主键对应的对象
+  end
+
   def new
     @group = Group.new
   end
