@@ -1,0 +1,37 @@
+<div class="col-md-12">
+  <div class="group">
+    <!-- new_group_path 辅助方法, 返回值为 groups/new -->
+    <%= link_to("New group", new_group_path, class: "btn btn-primary pull-right") %>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Title</td>
+        <td>Description</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @groups.each do |group| %>
+        <tr>
+          <td>#</td>
+          <!-- group_path(group) 辅助方法, 返回值为 /groups/:id -->
+          <td><%= link_to(group.title, group_path(group)) %></td>
+          <td><%= group.description %></td>
+          <td>
+            <!-- edit_group_path(group) 辅助方法, 返回值为 /groups/:id/edit -->
+            <%= link_to("Edit", edit_group_path(group),
+                        class: "btn btn-sm btn-default") %>
+            <!-- group_path(group) 辅助方法, 返回值为 /groups/:id -->
+            <%= link_to("Delete", group_path(group),
+                        class: "btn btn-sm btn-default",
+                        method: :delete,
+                        data: { confirm: "Are you sure?" }) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
