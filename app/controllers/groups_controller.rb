@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     # 赋值关联的对象, @group.user 返回 current_user 对象
+    # 数据库层面会把 current_user 的 id, 赋值给 @group 的 user_id
     @group.user = current_user
 
     if @group.save
