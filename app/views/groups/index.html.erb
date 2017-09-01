@@ -10,6 +10,7 @@
         <td>#</td>
         <td>Title</td>
         <td>Description</td>
+        <td>Creator</td>
       </tr>
     </thead>
 
@@ -20,6 +21,8 @@
           <!-- group_path(group) 辅助方法, 返回值为 /groups/:id -->
           <td><%= link_to(group.title, group_path(group)) %></td>
           <td><%= group.description %></td>
+          <!-- group.user 返回当时创建群组的 User实例 -->
+          <td><%= group.user.email %></td>
           <td>
             <!-- edit_group_path(group) 辅助方法, 返回值为 /groups/:id/edit -->
             <%= link_to("Edit", edit_group_path(group),
