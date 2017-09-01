@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
-  # :authenticate_user! 是 devise 提供的 helper
-  before_action :authenticate_user!, only: [:new]
+  # :authenticate_user! 是 devise 提供的 helper, 限制使用者必须登入
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @groups = Group.all
@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.user = current_user
 
     if @group.save
       redirect_to groups_path # groups_path 辅助方法, 返回值为 /groups
