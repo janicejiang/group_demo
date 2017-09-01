@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  # :authenticate_user! 是 devise 提供的 helper
   before_action :authenticate_user!, only: [:new]
 
   def index
@@ -44,7 +45,7 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
-  private # private 在 GroupsController 内被调用
+  private # private 方法在 GroupsController 内被调用
 
   def group_params
     params.require(:group).permit(:title, :description)
