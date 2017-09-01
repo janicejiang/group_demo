@@ -10,7 +10,8 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id]) # find 方法检索指定主键对应的对象
     # @group.post 会返回一个数组包含该 group 的所有 posts
-    @posts = @group.posts.recent # collection 方法返回一个数组, 包含所有关联的对象
+    # collection 方法返回一个数组, 包含所有关联的对象
+    @posts = @group.posts.recent.paginate(:page => params[:page], :per_page => 5) 
   end
 
   def new
