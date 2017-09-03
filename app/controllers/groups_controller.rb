@@ -25,6 +25,7 @@ class GroupsController < ApplicationController
     @group.user = current_user
 
     if @group.save
+      current_user.join!(@group)
       redirect_to groups_path # groups_path 辅助方法, 返回值为 /groups
     else
       render :new
