@@ -5,5 +5,11 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :posts
+
+    # 成员路由
+    member do
+      post :join
+      post :quit
+    end
   end
 end
